@@ -1,0 +1,3 @@
+#include <iostream>
+#include <vector>
+using namespace std;vector<int>A[100001];int P[100001]={0};int D[100001]={0};void dfs(int x,int p,int d){D[x]=d;P[x]=p;for(int c:A[x]){if(!D[c])dfs(c,x,d+1);else if(D[c]<=d-2){cout<<d-D[c]+2<<'\n'<<x<< ' ';while(p!=c){cout<<p<<' ';p=P[p];}cout<<c<<' '<<x<<'\n';exit(0);}}}int main(){int n,m;cin>>n>>m;for(int i=0;i<m;i++){int a,b;cin>>a>>b;A[a].push_back(b);A[b].push_back(a);}for(int i=1;i<=n;i++)if(!D[i])dfs(i,0,1);cout << "IMPOSSIBLE\n";}
